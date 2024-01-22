@@ -8,10 +8,18 @@ this only views the ".pdf" files also located in the same folder as this script,
 csv in the same folder. This script is designed on the "PMP/JTE Detailed Worksheet" lodgemaster 
 generated file (circa 2024). It also tends to begin to grab incorrect data on reports pre-2019.
 
+INSTRUCTIONS:
+download all reports and name files with the first word of the file name being the name of the lodge (case sensitive).
+place all files into a single folder with the python script
+run the script and find the generated csv file
+paste the csv file into the excel sheet and verify data (the G3 and E3 are functionally identical) 
+
 BACKGROUND:
 as of writing this, I am the G3 PMP coordinator, and i got really tired of copying all the data 
 from the lodgemaster-generated pdfs into an excel sheet that I could actually compare the different
-lodges. I joked it might be faster for me to write a program to do it, so alas, bon apetit. 
+lodges. I joked it might be faster for me to write a program to do it, so alas, bon apetit. If you 
+are in a similar position in your lodge, section, or nationally, remember that the data only goes so 
+far, and the real value in these positions is infomred decision making and goal setting. 
 
 contact:
 if you have any questions about PMP, this file, or anything else, shoot an email to iwilhite@netopalis.org
