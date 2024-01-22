@@ -1,16 +1,17 @@
 """
 Order of the Arrow Performance Measurement Program PDF reader 1.1.4
 Created by Ian Wilhite
-11/19/2023
+1/22/2024
+
+LIMITATIONS / USAGE:
+this only views the ".pdf" files also located in the same folder as this script, and will create the 
+csv in the same folder. This script is designed on the "PMP/JTE Detailed Worksheet" lodgemaster 
+generated file (circa 2024). It also tends to begin to grab incorrect data on reports pre-2019.
 
 BACKGROUND:
 as of writing this, I am the G3 PMP coordinator, and i got really tired of copying all the data 
 from the lodgemaster-generated pdfs into an excel sheet that I could actually compare the different
 lodges. I joked it might be faster for me to write a program to do it, so alas, bon apetit. 
-
-LIMITATIONS / USAGE:
-this only views the ".pdf" files also located in the same folder as this script, and will create the 
-csv in the same folder. This script is designed on the "PMP/JTE Detailed Worksheet" lodgemaster generated file (circa 2024)
 
 contact:
 if you have any questions about PMP, this file, or anything else, shoot an email to iwilhite@netopalis.org
