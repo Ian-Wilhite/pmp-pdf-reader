@@ -102,7 +102,7 @@ class LodgeData:
         self.lodge_all = list(self.lodge_all)
         
     
-    def write_info(self, f_sum):
+    def write_info(self, f_sum, folder):
         #convert to str & remove commas (numbers >1000 are formatted w commas)
         self.years = list(map(lambda x: str(x).replace(",",""), self.years))
         self.election = list(map(lambda x: str(x).replace(",",""), self.election))
@@ -133,6 +133,9 @@ class LodgeData:
         self.lodge_all = list(map(lambda x: str(x).replace(",",""), self.lodge_all))
         
         #write to file
+        
+        os.chdir(starting_folder)#to write to the file in pmp reader
+        
         f_sum.write('years, ')# bc Im writing to a csv, a comma represents the next cell, and a \n represents the next row
         f_sum.write(', '.join(self.years) + "\n")
         f_sum.write('election rate, ')
@@ -188,6 +191,8 @@ class LodgeData:
         f_sum.write('all lodge members, ')
         f_sum.write(', '.join(self.lodge_all) + "\n")
         
+        os.chdir(starting_folder+"/Reports")#to continue to read the files within Reports
+        
         
     def wipe(self):
         self.years = []
@@ -230,12 +235,17 @@ def str_search(regex: str, df, case=False):
 
 # PART 1 - - - - - file reading / data processing- - - - - 
 
+#navigate into the reports folder
+starting_folder = os.getcwd()
+
+
+os.chdir(starting_folder+"/Reports")#file list needs to come from the reports folder
 files = [f for f in os.listdir() if os.path.isfile(f)] #creates str array of all filenames
 files.sort()#sorts alphabetically
 
 pdfs = []
 for i, f in enumerate(files): #new list pdfs of pdf filenames
-    if f[-3:] == "pdf":
+    if f[-3:] == "pdf": #checks in case non-pdf files ended up in the Reports folder
         pdfs += [f]
 
 # - - - - - - - -
@@ -243,7 +253,9 @@ print(pdfs) # prints filenames in current folder - for testing if the files are 
 # - - - - - - - -
 
 #start gathering data
-f_sum = open('G3_summary.csv', "w")
+os.chdir(starting_folder)
+f_sum = open('G3_summary.csv', "w") #file for summary
+os.chdir(starting_folder+"/Reports")
 
 mylodge = LodgeData()#creates lodge object for data management
 
@@ -254,20 +266,20 @@ for i, file in enumerate(pdfs):
     print(lodge_name)
     #       writes data to file
     # if found new lodge or the last report, save the info before gathering new data
-    if (current_lodge_name != lodge_name): #only writes to file upon finding a new lodge or the end of the list
+    if (current_lodge_name.lower() != lodge_name.lower()): #only writes to file upon finding a new lodge or the end of the list
         f_sum.write("\n" + current_lodge_name + "\n")#data gathered belongs to previous lodge, not  the one we just stumbled on
-        mylodge.write_info(f_sum)
+        mylodge.write_info(f_sum, starting_folder)
         mylodge.wipe() #resets the lodge data for the next round
         current_lodge_name = lodge_name#resets the lodge name for the next round
         
     #       gathers data
     dfs = read_pdf(file,pages="all") #returns list of dataframes representing pages from a file we know is a pdf
     
-    if lodge_name == "Nakona":
+    """if lodge_name == "Nakona":
         try:
             print(dfs)
         except:
-            pass
+            pass"""
     
     #easy data to grab, independant try/except for issue isolation (probs overkill)
     try:
@@ -402,28 +414,9 @@ for i, file in enumerate(pdfs):
     
     if (i == len(pdfs) - 1): #the end of the list
         f_sum.write("\n" + lodge_name + "\n")#data gathered belongs to current lodge
-        mylodge.write_info(f_sum)
+        mylodge.write_info(f_sum, starting_folder)
         
-        
-    #after the events at the bottom of page 3, the data may be in different places depending on the number of lodge events
-    
-    """
-    for df in dfs[2:5]: #DataFrame(s) object & list of objects
-        # Check if the string is present in any cell of the DataFrame
-        mask = df.apply(lambda x: "Previous total youth membership" in str(x))
-        if mask.any():
-            #we have the page containing the value
-            # Find the indices (rows) where the string is present
-            row = mask.idxmax()
-            try:
-                row = int(row)
-            except:
-                row = -1     """       
-            
-            
-    #str_search("")
-            
-      
+   
       
       
   
