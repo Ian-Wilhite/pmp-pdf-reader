@@ -2,7 +2,9 @@
 
 Order of the Arrow Performance Measurement Program PDF reader 1.1.4
 Created by Ian Wilhite, G3 PMP Coordinator, 2024
-2/15/2024
+updated 2/15/2024
+
+
 
 ## LIMITATIONS / USAGE:
 this only views the ".pdf" files also located in the "Reports" folder, and will create the csv in the "PMP-PDF-READER" folder. This script is designed on the "PMP/JTE Detailed Worksheet" lodgemaster generated file (circa 2024). It also begins to fail on reports pre-2019.
@@ -44,7 +46,8 @@ We welcome contributions from the open-source community and anyone interested in
 I appreciate any contributions, whether it's in the form of code, documentation, or suggestions.
 
 ## Background:
-As of writing this, I am the G3 PMP coordinator, and i got really tired of copying all the data from the lodgemaster-generated pdfs into an excel sheet that I could actually compare the different lodges. I joked it might be faster for me to write a program to do it, so alas, bon apetit. If you are in a similar position in your lodge, section, or nationally, remember that the data only goes so far, and the real value in these positions is infomred decision making and goal setting. 
+As of writing this, I am the G3 PMP coordinator, and i got really tired of copying all the data from the lodgemaster-generated pdfs into an excel sheet that I could actually compare the different lodges. The Performance Measurement Program (PMP) is a method created to evaluate a Lodge's performance as an organization and identify areas to improve. The 
+I joked it might be faster for me to write a program to do it, so alas, bon apetit. If you are in a similar position in your lodge, section, or nationally, remember that the data only goes so far, and the real value in these positions is infomred decision making and goal setting. 
 
 ## Contact:
 If you have any questions about PMP, this file, or anything else, shoot an email to iwilhite@netopalis.org
